@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dheeru | Unity Game Developer</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+      overflow-x: hidden;
+    }
+
+    /* ===== HERO HEADER (Compact) ===== */
+    .hero-header {
+      position: relative;
+      height: 60vh;
+      /* reduced from 100vh */
+      perspective: 1000px;
+      text-align: center;
+      overflow: hidden;
+      padding-top: 60px;
+      /* less padding */
+      background:
+        radial-gradient(circle at top, rgba(96, 165, 250, 0.25), transparent 60%),
+        linear-gradient(135deg, #020617, #1e3a8a, #2563eb);
+    }
+
+    /* ===== 3D CUBES ===== */
+    .cube {
+      position: absolute;
+      transform-style: preserve-3d;
+      animation: rotateCube linear infinite;
+    }
+
+    .cube div {
+      width: 50px;
+      height: 50px;
+      background: rgba(0, 255, 255, 0.05);
+      border: 2px solid #00f0ff;
+      border-radius: 6px;
+      box-shadow: 0 0 15px #00f0ff;
+    }
+
+    @keyframes rotateCube {
+      0% {
+        transform: rotateX(0deg) rotateY(0deg) translateY(0);
+      }
+
+      50% {
+        transform: rotateX(180deg) rotateY(180deg) translateY(-30px);
+      }
+
+      100% {
+        transform: rotateX(360deg) rotateY(360deg) translateY(0);
+      }
+    }
+
+    /* Individual cube positions */
+    .cube1 {
+      top: 10%;
+      left: 5%;
+      animation-duration: 12s;
+    }
+
+    .cube2 {
+      top: 40%;
+      left: 20%;
+      width: 40px;
+      height: 40px;
+      animation-duration: 8s;
+    }
+
+    .cube3 {
+      top: 20%;
+      right: 10%;
+      width: 50px;
+      height: 50px;
+      animation-duration: 15s;
+    }
+
+    .cube4 {
+      bottom: 10%;
+      right: 20%;
+      width: 35px;
+      height: 35px;
+      animation-duration: 10s;
+    }
+
+    .cube5 {
+      bottom: 20%;
+      left: 50%;
+      width: 45px;
+      height: 45px;
+      animation-duration: 13s;
+    }
+
+    /* ===== PARTICLES ===== */
+    .particle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: #00f0ff;
+      opacity: 0.7;
+      pointer-events: none;
+      transition: transform 0.2s ease;
+    }
+
+    /* ===== HEADER CONTENT ===== */
+    .hero-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 8px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      position: relative;
+      z-index: 2;
+      text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      opacity: 0.9;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-subtitle span {
+      color: #93c5fd;
+    }
+
+    .hero-logos {
+      margin: 20px 0 15px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-logos img {
+      width: 50px;
+      height: 50px;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      backdrop-filter: blur(6px);
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .hero-logos img:hover {
+      transform: translateY(-6px) scale(1.1);
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .hero-tagline {
+      margin-top: 15px;
+      font-size: 0.95rem;
+      opacity: 0.85;
+      position: relative;
+      z-index: 2;
+    }
+
+    .linkedin-top {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: #0a66c2;
+      color: #fff;
+      padding: 6px 10px;
+      border-radius: 6px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.3s;
+      z-index: 2;
+    }
+
+    .linkedin-top img {
+      width: 20px;
+      height: 20px;
+    }
+
+    .linkedin-top:hover {
+      background-color: #004182;
+    }
+
+    /* ===== Sections / Cards / Projects ===== */
+    section {
+      padding: 50px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #60a5fa;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #1e40af;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    .skills,
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: #020617;
+      padding: 20px;
+      border-radius: 18px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.55);
+    }
+
+    .game-icon {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 15px;
+    }
+
+    .game-icon img {
+      width: 160px;
+      height: 160px;
+      border-radius: 22px;
+      object-fit: cover;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: #93c5fd;
+      text-align: center;
+    }
+
+    .game-desc {
+      text-align: center;
+      font-size: 0.95rem;
+      opacity: 0.85;
+      margin-bottom: 14px;
+    }
+
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      font-size: 0.85rem;
+    }
+
+    .feature-list li {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 6px 10px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .store-buttons {
+      margin-top: 12px;
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .store-buttons img {
+      height: 48px;
+      transition: transform 0.25s ease;
+    }
+
+    .store-buttons img:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background: #020617;
+      color: #9ca3af;
+    }
+
+    a {
+      color: #60a5fa;
+      text-decoration: none;
+    }
+
+    @media (max-width: 480px) {
+      .feature-list {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== HERO HEADER ===== -->
+  <header class="hero-header">
+    <a href="https://www.linkedin.com/in/dheeraj-s-a3a553231" class="linkedin-top">
+      <img src="https://img.icons8.com/ios-filled/50/ffffff/linkedin.png" alt="LinkedIn Icon" /> LinkedIn
+    </a>
+
+    <!-- 3D Cubes -->
+    <div class="cube cube1">
+      <div></div>
+    </div>
+    <div class="cube cube2">
+      <div></div>
+    </div>
+    <div class="cube cube3">
+      <div></div>
+    </div>
+    <div class="cube cube4">
+      <div></div>
+    </div>
+    <div class="cube cube5">
+      <div></div>
+    </div>
+
+    <!-- Particles -->
+    <div id="particles"></div>
+
+    <h1>Dheeraj Kushwaha</h1>
+    <p class="hero-subtitle">Team Lead & Unity Game Developer <span>• 4+ Years Experience</span></p>
+
+    <div class="hero-logos">
+      <img src="https://img.icons8.com/ios-filled/100/ffffff/unity.png" alt="Unity Logo">
+      <img src="https://img.icons8.com/ios-filled/100/ffffff/controller.png" alt="Game Dev">
+      <img src="https://img.icons8.com/ios-filled/100/ffffff/google-play.png" alt="Google Play">
+      <img src="https://img.icons8.com/ios-filled/100/ffffff/apple-app-store.png" alt="App Store">
+    </div>
+
+    <p class="hero-tagline">Building high-quality mobile & multiplayer games using Unity</p>
+  </header>
+
+  <!-- ===== Sections (About, Skills, Projects, Contact) ===== -->
+  <!-- Keep your existing sections here as in your original HTML -->
+
+  <section>
+    <h2>About Me</h2>
+    <p>
+      I am a Unity Game Developer with over 4 years of professional experience, currently working as a Team Lead. I
+      specialize
+      in designing, developing, and optimizing high-quality mobile and multiplayer games using the Unity engine. I focus
+      on
+      building clean, scalable, and maintainable systems by following SOLID principles and industry best practices.
+      Along with
+      development, I have hands-on experience in client handling, project coordination, and managing build submissions
+      for
+      both the Google Play Store and Apple App Store.
+    </p>
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <div class="skills">
+      <div class="card">🎮 Unity Engine (2D & 3D)</div>
+      <div class="card">💻 C# Programming</div>
+      <div class="card">🏗️ Game Architecture & SOLID Principles</div>
+      <div class="card">📱 Mobile Game Development (Android, iOS, PC & Webgl)</div>
+      <div class="card">🌐 Multiplayer & Socket Programming</div>
+      <div class="card">🔥 Firebase & Social Login Integration</div>
+      <div class="card">🗂️ Version Control (Git, GitHub, Plastic SCM)</div>
+      <div class="card">🚀 App Store & Play Store Submission</div>
+    </div>
+  </section>
+
+
+  <section>
+
+    <h2>Projects</h2>
+    <div class="projects">
+
+      <!-- AlnahshaRun -->
+      <div class="card">
+        <!-- Game Icon -->
+        <div class="game-icon">
+          <img src="images/alnahsharun.png" alt="AlnahshaRun Game Icon" />
+        </div>
+
+        <h3>AlnahshaRun</h3>
+        <p class="game-desc">
+          Endless running game with fast-paced gameplay and exciting power-ups.
+        </p>
+
+        <!-- Features -->
+        <ul class="feature-list">
+          <li>🎮 Unity</li>
+          <li>📱 Android</li>
+          <li>🍎 iOS</li>
+          <li>💰 Monetization</li>
+          <li>⚡ Powerups</li>
+          <li>🏃 Endless Runner</li>
+        </ul>
+
+        <!-- OFFICIAL STORE BADGES -->
+        <div class="store-buttons">
+          <a href="https://apps.apple.com/tr/app/%D8%A7%D9%84%D9%86%D8%AD%D8%B4%D8%A9-run/id1473582650" target="_blank"
+            rel="noopener noreferrer">
+            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+              alt="Download on the App Store" />
+          </a>
+
+          <a href="https://play.google.com/store/apps/details?id=com.moderndoctors.alnahsharun&hl=en" target="_blank"
+            rel="noopener noreferrer">
+            <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+              alt="Get it on Google Play" />
+          </a>
+        </div>
+      </div>
+
+
+
+      <!-- Pongz - Multiplayer Mahjong -->
+      <div class="card">
+        <div class="game-icon">
+          <img src="images/pongz.jpg" alt="Pongz Mahjong Game Icon" />
+        </div>
+
+        <h3>Pongz</h3>
+
+        <p class="game-desc">
+          Real-time 4-player Mahjong multiplayer game with synchronized gameplay,
+          smart networking, and a clean, intuitive user interface.
+        </p>
+
+        <ul class="feature-list">
+          <li>🀄 Mahjong</li>
+          <li>🌐 Real-time Multiplayer</li>
+          <li>🔌 Socket.IO</li>
+          <li>🎮 Unity 3D</li>
+          <li>📱 Android</li>
+          <li>🍎 iOS</li>
+        </ul>
+
+        <div class="store-buttons">
+          <!-- App Store -->
+          <a href="https://apps.apple.com/in/app/pongz/id6755418562" target="_blank" rel="noopener noreferrer">
+            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+              alt="Download on the App Store" />
+          </a>
+
+          <!-- Play Store -->
+          <a href="https://play.google.com/store/apps/details?id=com.pixelstackstudios.pongz&hl=en" target="_blank"
+            rel="noopener noreferrer">
+            <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+              alt="Get it on Google Play" />
+          </a>
+        </div>
+      </div>
+
+      <!-- That Questions Game - Multiplayer Quiz -->
+      <div class="card">
+        <div class="game-icon">
+          <img src="images/thatQuestionsGame.png" alt="That Questions Game Icon" />
+        </div>
+
+        <h3>That Questions Game</h3>
+
+        <p class="game-desc">
+          Multiplayer quiz game where 2 to 8 players answer questions simultaneously.
+          Questions are displayed one by one, creating a fun and competitive group experience.
+        </p>
+
+        <ul class="feature-list">
+          <li>❓ Quiz Game</li>
+          <li>🌐 Multiplayer</li>
+          <li>👥 2–8 Players</li>
+          <li>🎮 Unity</li>
+          <li>🍎 iOS Only</li>
+          <li>⚡ Real-time</li>
+        </ul>
+
+        <div class="store-buttons">
+          <a href="https://apps.apple.com/us/app/that-questions-game/id6451314193" target="_blank"
+            rel="noopener noreferrer">
+            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+              alt="Download on the App Store" />
+          </a>
+        </div>
+      </div>
+
+
+      <!-- Jamaican Domino - Multiplayer -->
+      <div class="card">
+        <div class="game-icon">
+          <img src="images/domino.jpeg" alt="Jamaican Domino Game Icon" />
+        </div>
+
+        <h3>Jamaican Domino</h3>
+
+        <p class="game-desc">
+          Classic Jamaican-style dominoes game featuring real-time 4-player multiplayer.
+          Players match numbered tiles to form chains while competing strategically in an
+          engaging and social gameplay experience.
+        </p>
+
+        <ul class="feature-list">
+          <li>🁣 Dominoes</li>
+          <li>👥 4 Player Multiplayer</li>
+          <li>🔥 Firebase </li>
+          <li>🔐 Google Authentication</li>
+          <li>📢 Google AdMob</li>
+          <li>🎮 Unity</li>
+        </ul>
+
+        <div class="store-buttons">
+        </div>
+      </div>
+
+      <!-- Breathing App -->
+      <div class="card">
+        <div class="game-icon">
+          <img src="images/breathing.png" alt="Breathing App Icon" />
+        </div>
+
+        <h3>Breathing App</h3>
+
+        <p class="game-desc">
+          A wellness-focused breathing application designed to help users reduce stress,
+          improve focus, and promote relaxation through guided breathing exercises using
+          visual and audio cues.
+        </p>
+
+        <ul class="feature-list">
+          <li>🧘 Wellness</li>
+          <li>🌬️ Guided Breathing</li>
+          <li>🎵 Audio Cues</li>
+          <li>🎨 Visual Guidance</li>
+          <li>📱 Mobile App</li>
+          <li>🎮 Unity</li>
+        </ul>
+
+        <div class="store-buttons">
+        </div>
+      </div>
+
+      <!-- The Last Stand - FPS -->
+      <div class="card">
+        <div class="game-icon">
+          <img src="images/theLastStand.png" alt="The Last Stand Game Icon" />
+        </div>
+
+        <h3>The Last Stand</h3>
+
+        <p class="game-desc">
+          First-person shooter game featuring intense zombie combat with a progressive
+          wave-based system. Players survive 10 increasingly difficult waves, earn rewards,
+          upgrade weapons, and face a powerful final boss.
+        </p>
+
+        <ul class="feature-list">
+          <li>🔫 FPS Gameplay</li>
+          <li>🧟 Zombie AI</li>
+          <li>🌊 10 Wave System</li>
+          <li>💰 Reward & Upgrade System</li>
+          <li>👑 Final Boss</li>
+          <li>🖥️ Windows PC</li>
+        </ul>
+
+        <div class="store-buttons">
+          <span style="opacity:0.6;"></span>
+        </div>
+      </div>
+
+
+    </div>
+  </section>
+
+  <section>
+    <h2>Personal Projects</h2>
+    <div class="projects">
+
+      <!-- 7 Up & 7 Down -->
+      <div class="card">
+        <div class="game-icon">
+          <img src="images/7up7down.png" alt="7 Up & 7 Down Game Icon" />
+        </div>
+
+        <h3>7 Up & 7 Down</h3>
+
+        <p class="game-desc">
+          Single-player board game built in Unity featuring smooth card dealing,
+          real-time score tracking, and intuitive gameplay flow. Designed with a clean,
+          interactive UI to ensure an engaging and polished player experience.
+        </p>
+
+        <ul class="feature-list">
+          <li>🃏 Card Game</li>
+          <li>👤 Single Player</li>
+          <li>🎮 Unity</li>
+          <li>📊 Score Tracking</li>
+          <li>🎨 Interactive UI</li>
+          <li>📱 Android</li>
+        </ul>
+
+        <div class="store-buttons">
+          <span style="opacity:0.6;">🚧 Coming Soon on Google Play</span>
+        </div>
+      </div>
+
+
+      <!-- Enemy Chase Game -->
+      <div class="card">
+        <div class="game-icon">
+          <img src="images/enemychase.png" alt="Enemy Chase Game Icon" />
+        </div>
+
+        <h3>Enemy Chase Game</h3>
+
+        <p class="game-desc">
+          Fast-paced action game where enemies dynamically chase the player using
+          intelligent movement and detection logic. Focused on smooth controls,
+          responsive AI behavior, and engaging moment-to-moment gameplay.
+        </p>
+
+        <ul class="feature-list">
+          <li>🏃 Player Chase Mechanics</li>
+          <li>🤖 Enemy AI</li>
+          <li>🎯 Detection System</li>
+          <li>🎮 Unity</li>
+          <li>⚡ Smooth Movement</li>
+          <li>🧠 Gameplay Logic</li>
+        </ul>
+
+        <div class="store-buttons">
+          <span style="opacity:0.6;">🧪 Prototype / Recent Work</span>
+        </div>
+      </div>
+
+
+      <!-- Highway Surfer -->
+      <div class="card">
+        <div class="game-icon">
+          <img src="images/highway.png" alt="Highway Surfer Game Icon" />
+        </div>
+
+        <h3>Highway Surfer</h3>
+
+        <p class="game-desc">
+          Level-based endless-style surfing game with addictive one-touch controls.
+          Players steer left and right to avoid traffic, collect power-ups, unlock
+          new characters, and complete challenging levels across multiple platforms.
+        </p>
+
+        <ul class="feature-list">
+          <li>🎮 Unity (C#)</li>
+          <li>📱 Android & iOS</li>
+          <li>🧲 Power-ups (Shield, Magnet)</li>
+          <li>🧍 20+ Unlockable Characters</li>
+        </ul>
+
+        <ul class="feature-list">
+          <li>🏆 Leaderboards (Dreamlo)</li>
+          <li>📢 AdMob & Unity Ads</li>
+        </ul>
+
+        <div class="store-buttons">
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p>
+      GitHub: <a href="https://github.com/dheeraj9001" target="_blank">github.com/dheeraj9001</a><br />
+      Email: dheerajforever007@gmail.com
+    </p>
+  </section>
+
+  <footer>
+    © 2025 Dheeraj Kushwaha | Unity Game Developer
+  </footer>
+
+  <script>
+    // Generate interactive particles
+    const particlesContainer = document.getElementById('particles');
+    const particles = [];
+    for (let i = 0; i < 50; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.top = Math.random() * window.innerHeight * 0.6 + 'px'; // respect compact header height
+      p.style.left = Math.random() * window.innerWidth + 'px';
+      particlesContainer.appendChild(p);
+      particles.push(p);
+    }
+
+    // Move particles away from mouse
+    document.addEventListener('mousemove', (e) => {
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
+      particles.forEach(p => {
+        const rect = p.getBoundingClientRect();
+        const dx = rect.left - mouseX;
+        const dy = rect.top - mouseY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 100) {
+          p.style.transform = `translate(${dx / 4}px, ${dy / 4}px)`;
+        } else {
+          p.style.transform = `translate(0,0)`;
+        }
+      });
+    });
+  </script>
+</body>
+
+
+</html>
