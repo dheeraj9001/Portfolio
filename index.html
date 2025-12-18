@@ -303,6 +303,34 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* ===== CV DOWNLOAD BUTTON ===== */
+    .cv-button {
+      margin-top: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 22px;
+      background: linear-gradient(135deg, #2563eb, #60a5fa);
+      color: #020617;
+      font-weight: 700;
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cv-button img {
+      width: 20px;
+      height: 20px;
+    }
+
+    .cv-button:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 18px 40px rgba(96, 165, 250, 0.6);
+    }
   </style>
 </head>
 
@@ -310,6 +338,11 @@
 
   <!-- ===== HERO HEADER ===== -->
   <header class="hero-header">
+    <a href="assets/DheerajResume.pdf" class="cv-button" target="_blank" download>
+      <img src="https://img.icons8.com/ios-filled/50/000000/download--v1.png" />
+      Download CV
+    </a>
+
     <a href="https://www.linkedin.com/in/dheeraj-s-a3a553231" class="linkedin-top">
       <img src="https://img.icons8.com/ios-filled/50/ffffff/linkedin.png" alt="LinkedIn Icon" /> LinkedIn
     </a>
