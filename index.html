@@ -298,9 +298,78 @@
       text-decoration: none;
     }
 
+    /* ===== SPACESHIP GAME ===== */
+    .spaceship {
+      position: fixed;
+      font-size: 40px;
+      pointer-events: none;
+      z-index: 1000;
+      transition: transform 0.1s ease-out;
+      text-shadow: 0 0 10px #60a5fa, 0 0 20px #60a5fa;
+      filter: drop-shadow(0 0 5px #60a5fa);
+    }
+
+    .asteroid {
+      position: fixed;
+      font-size: 20px;
+      pointer-events: none;
+      z-index: 999;
+      animation: floatAsteroid linear infinite;
+      opacity: 0.8;
+    }
+
+    .asteroid.destroyed {
+      animation: explode 0.5s ease-out forwards;
+      opacity: 0;
+    }
+
+    @keyframes floatAsteroid {
+      0% { transform: translateY(0) rotate(0deg); }
+      25% { transform: translateY(-10px) rotate(90deg); }
+      50% { transform: translateY(0) rotate(180deg); }
+      75% { transform: translateY(10px) rotate(270deg); }
+      100% { transform: translateY(0) rotate(360deg); }
+    }
+
+    @keyframes explode {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.5); opacity: 0.8; }
+      100% { transform: scale(0); opacity: 0; }
+    }
+
+    #score-display {
+      position: fixed;
+      top: 80px;
+      right: 20px;
+      background: rgba(2, 6, 23, 0.9);
+      color: #60a5fa;
+      padding: 10px 15px;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 14px;
+      z-index: 1001;
+      border: 1px solid #60a5fa;
+      backdrop-filter: blur(10px);
+    }
+
     @media (max-width: 480px) {
       .feature-list {
         grid-template-columns: 1fr;
+      }
+
+      .spaceship {
+        font-size: 30px;
+      }
+
+      .asteroid {
+        font-size: 15px;
+      }
+
+      #score-display {
+        top: 70px;
+        right: 10px;
+        font-size: 12px;
+        padding: 8px 12px;
       }
     }
 
@@ -362,6 +431,11 @@
     <!-- Particles -->
     <div id="particles"></div>
 
+    <!-- Spaceship Game Elements -->
+    <div id="spaceship" class="spaceship">🚀</div>
+    <div id="asteroids"></div>
+    <div id="score-display">Score: 0</div>
+
     <h1>Dheeraj Kushwaha</h1>
     <p class="hero-subtitle">Team Lead & Unity Game Developer <span>• 4+ Years Experience</span></p>
 
@@ -386,8 +460,9 @@
   <section>
     <h2>About Me</h2>
     <p>
-      Unity Game Developer and Team Lead with 4+ years of experience delivering scalable mobile and multiplayer games. 
-      I specialize in building clean, production-ready architectures, real-time networking systems, and performance-optimized gameplay for Android and iOS.
+      Unity Game Developer and Team Lead with 4+ years of experience delivering scalable mobile and multiplayer games.
+      I specialize in building clean, production-ready architectures, real-time networking systems, and
+      performance-optimized gameplay for Android and iOS.
       I have successfully shipped multiple live games and led small teams from prototype to store release.
     </p>
   </section>
@@ -612,7 +687,7 @@
     <h2>Personal Projects</h2>
     <div class="projects">
 
- <!-- Highway Surfer -->
+      <!-- Highway Surfer -->
       <div class="card">
         <div class="game-icon">
           <img src="images/highway.png" alt="Highway Surfer Game Icon" />
@@ -638,18 +713,17 @@
           <li>📢 AdMob & Unity Ads</li>
         </ul>
 
-          <!-- OFFICIAL STORE BADGE -->
-    <div class="store-buttons">
-   <a href="https://play.google.com/store/apps/details?id=com.HawkGames.HighwaySurfer&hl=en_IN"
-     target="_blank"
-     rel="noopener noreferrer">
-    <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
-         alt="Get it on Google Play" />
-   </a>
+        <!-- OFFICIAL STORE BADGE -->
+        <div class="store-buttons">
+          <a href="https://play.google.com/store/apps/details?id=com.HawkGames.HighwaySurfer&hl=en_IN" target="_blank"
+            rel="noopener noreferrer">
+            <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+              alt="Get it on Google Play" />
+          </a>
         </div>
       </div>
 
-    
+
       <!-- 7 Up & 7 Down -->
       <div class="card">
         <div class="game-icon">
@@ -679,31 +753,35 @@
       </div>
 
 
-      <!-- Enemy Chase Game -->
+      <!-- Archer Hero Game--->
       <div class="card">
         <div class="game-icon">
-          <img src="images/enemychase.png" alt="Enemy Chase Game Icon" />
+          <img src="images/archerhero.png" alt="Archer Hero Game Icon" />
         </div>
 
-        <h3>Enemy Chase Game</h3>
+        <h3>Archer Hero</h3>
 
         <p class="game-desc">
-          Fast-paced action game where enemies dynamically chase the player using
-          intelligent movement and detection logic. Focused on smooth controls,
-          responsive AI behavior, and engaging moment-to-moment gameplay.
+          Archer Hero 🏹 is a Unity-based mobile game featuring precision archery mechanics and enemy combat.
+          implemented
+          player shooting mechanics, enemy AI, and optimized performance for mobile platforms.
         </p>
 
         <ul class="feature-list">
-          <li>🏃 Player Chase Mechanics</li>
-          <li>🤖 Enemy AI</li>
-          <li>🎯 Detection System</li>
-          <li>🎮 Unity</li>
-          <li>⚡ Smooth Movement</li>
-          <li>🧠 Gameplay Logic</li>
+          <li>🏹 Precision Archery Mechanics</li>
+          <li>🎯 Aim & Shoot Controls</li>
+          <li>🤖 Enemy AI Behavior</li>
+          <li>💥 Projectile Physics</li>
+          <li>⚔️ Combat System</li>
+          <li>⚡ Smooth Player Movement</li>
         </ul>
 
         <div class="store-buttons">
-          <span style="opacity:0.6;">🧪 Prototype / Recent Work</span>
+          <a href="https://play.google.com/store/apps/details?id=com.yourcompany.archerhero" target="_blank"
+            rel="noopener noreferrer">
+            <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+              alt="Get it on Google Play" />
+          </a>
         </div>
       </div>
 
@@ -752,6 +830,79 @@
         }
       });
     });
+
+    // ===== SPACESHIP GAME =====
+    const spaceship = document.getElementById('spaceship');
+    const asteroidsContainer = document.getElementById('asteroids');
+    const scoreDisplay = document.getElementById('score-display');
+    let score = 0;
+    let asteroids = [];
+    const asteroidEmojis = ['☄️', '🪨', '🌑', '💫', '⭐'];
+
+    // Spaceship follows mouse
+    document.addEventListener('mousemove', (e) => {
+      spaceship.style.left = e.clientX - 20 + 'px';
+      spaceship.style.top = e.clientY - 20 + 'px';
+    });
+
+    // Create asteroids
+    function createAsteroid() {
+      const asteroid = document.createElement('div');
+      asteroid.className = 'asteroid';
+      asteroid.textContent = asteroidEmojis[Math.floor(Math.random() * asteroidEmojis.length)];
+      asteroid.style.left = Math.random() * (window.innerWidth - 40) + 'px';
+      asteroid.style.top = Math.random() * (window.innerHeight - 40) + 'px';
+      asteroid.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      asteroidsContainer.appendChild(asteroid);
+      asteroids.push(asteroid);
+
+      // Remove asteroid after animation
+      setTimeout(() => {
+        if (asteroid.parentNode) {
+          asteroid.parentNode.removeChild(asteroid);
+          asteroids = asteroids.filter(a => a !== asteroid);
+        }
+      }, 5000);
+    }
+
+    // Create asteroids periodically
+    setInterval(createAsteroid, 2000);
+
+    // Collision detection
+    function checkCollisions() {
+      const shipRect = spaceship.getBoundingClientRect();
+
+      asteroids.forEach((asteroid, index) => {
+        const asteroidRect = asteroid.getBoundingClientRect();
+
+        if (shipRect.left < asteroidRect.right &&
+            shipRect.right > asteroidRect.left &&
+            shipRect.top < asteroidRect.bottom &&
+            shipRect.bottom > asteroidRect.top) {
+
+          // Collision detected!
+          asteroid.classList.add('destroyed');
+          score += 10;
+          scoreDisplay.textContent = `Score: ${score}`;
+
+          // Remove asteroid after explosion
+          setTimeout(() => {
+            if (asteroid.parentNode) {
+              asteroid.parentNode.removeChild(asteroid);
+              asteroids.splice(index, 1);
+            }
+          }, 500);
+        }
+      });
+    }
+
+    // Check collisions every 100ms
+    setInterval(checkCollisions, 100);
+
+    // Add some initial asteroids
+    for (let i = 0; i < 5; i++) {
+      setTimeout(createAsteroid, i * 500);
+    }
   </script>
 </body>
 
