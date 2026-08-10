@@ -324,17 +324,42 @@
     }
 
     @keyframes floatAsteroid {
-      0% { transform: translateY(0) rotate(0deg); }
-      25% { transform: translateY(-10px) rotate(90deg); }
-      50% { transform: translateY(0) rotate(180deg); }
-      75% { transform: translateY(10px) rotate(270deg); }
-      100% { transform: translateY(0) rotate(360deg); }
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      25% {
+        transform: translateY(-10px) rotate(90deg);
+      }
+
+      50% {
+        transform: translateY(0) rotate(180deg);
+      }
+
+      75% {
+        transform: translateY(10px) rotate(270deg);
+      }
+
+      100% {
+        transform: translateY(0) rotate(360deg);
+      }
     }
 
     @keyframes explode {
-      0% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.5); opacity: 0.8; }
-      100% { transform: scale(0); opacity: 0; }
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      50% {
+        transform: scale(1.5);
+        opacity: 0.8;
+      }
+
+      100% {
+        transform: scale(0);
+        opacity: 0;
+      }
     }
 
     #score-display {
@@ -400,6 +425,32 @@
       transform: translateY(-4px) scale(1.03);
       box-shadow: 0 18px 40px rgba(96, 165, 250, 0.6);
     }
+
+    .feature-list-container {
+      max-height: 180px;
+      overflow-y: auto;
+      margin-top: 15px;
+      padding-right: 8px;
+    }
+
+    /* Custom scrollbar */
+    .feature-list-container::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .feature-list-container::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+    }
+
+    .feature-list-container::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.35);
+      border-radius: 10px;
+    }
+
+    .feature-list-container::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.55);
+    }
   </style>
 </head>
 
@@ -460,12 +511,17 @@
   <section>
     <h2>About Me</h2>
     <p>
-      Unity Game Developer and Team Lead with 4+ years of experience delivering scalable mobile and multiplayer games.
-      I specialize in building clean, production-ready architectures, real-time networking systems, and
-      performance-optimized gameplay for Android and iOS.
-      I have successfully shipped multiple live games and led small teams from prototype to store release.
+      I’m <strong>Dheeraj Kushwaha</strong>, a Unity Game Developer and Team Lead with 4+ years
+      of experience in game development, team leadership, and delivering production-ready
+      mobile and multiplayer games. I have strong experience in taking projects from
+      concept and prototype to successful store release, while focusing on quality,
+      performance, scalability, and timely delivery. I enjoy collaborating with
+      designers, developers, and cross-functional teams, solving technical challenges,
+      and taking ownership of projects to deliver reliable and engaging gaming
+      experiences across Android and iOS.
     </p>
   </section>
+
 
   <section>
     <h2>Skills</h2>
@@ -476,6 +532,7 @@
       <div class="card">📱 Mobile Game Development (Android, iOS, PC & Webgl)</div>
       <div class="card">🌐 Multiplayer & Socket Programming</div>
       <div class="card">🔥 Firebase & Social Login Integration</div>
+      <div class="card">🥽 AR, VR & MR Development</div>
       <div class="card">🗂️ Version Control (Git, GitHub, Plastic SCM)</div>
       <div class="card">🚀 App Store & Play Store Submission</div>
     </div>
@@ -724,34 +781,6 @@
       </div>
 
 
-      <!-- 7 Up & 7 Down -->
-      <div class="card">
-        <div class="game-icon">
-          <img src="images/7up7down.png" alt="7 Up & 7 Down Game Icon" />
-        </div>
-
-        <h3>7 Up & 7 Down</h3>
-
-        <p class="game-desc">
-          Single-player board game built in Unity featuring smooth card dealing,
-          real-time score tracking, and intuitive gameplay flow. Designed with a clean,
-          interactive UI to ensure an engaging and polished player experience.
-        </p>
-
-        <ul class="feature-list">
-          <li>🃏 Card Game</li>
-          <li>👤 Single Player</li>
-          <li>🎮 Unity</li>
-          <li>📊 Score Tracking</li>
-          <li>🎨 Interactive UI</li>
-          <li>📱 Android</li>
-        </ul>
-
-        <div class="store-buttons">
-          <span style="opacity:0.6;">🚧 Coming Soon on Google Play</span>
-        </div>
-      </div>
-
 
       <!-- Archer Hero Game--->
       <div class="card">
@@ -785,6 +814,77 @@
         </div>
       </div>
 
+
+      <!-- Snake Vs Block -->
+      <div class="card">
+        <div class="game-icon">
+          <img src="images/SnakevsBlock.png" alt="Snake Vs Block Game Icon" />
+        </div>
+
+        <h3>Snake Vs Block</h3>
+
+        <p class="game-desc">
+          Fast-paced arcade game built in Unity where players control a growing snake,
+          collect numbers to increase its length, and break through numbered blocks.
+          Features smooth gameplay, progressive levels, rewarding challenges, and
+          integrated Google Play Games services for a connected player experience.
+        </p>
+
+        <div class="feature-list-container">
+          <ul class="feature-list">
+            <li>🐍 Snake Arcade Game</li>
+            <li>🧱 Block Breaking Gameplay</li>
+            <li>🎮 Unity 6</li>
+            <li>📈 Progressive Levels</li>
+            <li>🏆 Google Play Leaderboards</li>
+            <li>🎮 Google Play Games</li>
+            <li>💰 LevelPlay Mediation</li>
+            <li>📺 Unity Ads</li>
+            <li>📢 Google AdMob</li>
+            <li>🛒 Unity IAP</li>
+            <li>🚫 Remove Ads Purchase</li>
+            <li>📢 Android push Notification</li>
+            <li>🎨 Interactive UI & Animations</li>
+            <li>📱 Android</li>
+          </ul>
+        </div>
+
+        <div class="store-buttons">
+          <a href="https://play.google.com/store/apps/details?id=com.HawkGames.SnakeVsBlock" target="_blank"
+            rel="noopener noreferrer">
+            <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+              alt="Get it on Google Play" />
+          </a>
+        </div>
+      </div>
+
+      <!-- 7 Up & 7 Down -->
+      <div class="card">
+        <div class="game-icon">
+          <img src="images/7up7down.png" alt="7 Up & 7 Down Game Icon" />
+        </div>
+
+        <h3>7 Up & 7 Down</h3>
+
+        <p class="game-desc">
+          Single-player board game built in Unity featuring smooth card dealing,
+          real-time score tracking, and intuitive gameplay flow. Designed with a clean,
+          interactive UI to ensure an engaging and polished player experience.
+        </p>
+
+        <ul class="feature-list">
+          <li>🃏 Card Game</li>
+          <li>👤 Single Player</li>
+          <li>🎮 Unity</li>
+          <li>📊 Score Tracking</li>
+          <li>🎨 Interactive UI</li>
+          <li>📱 Android</li>
+        </ul>
+
+        <div class="store-buttons">
+          <span style="opacity:0.6;">🚧 Coming Soon on Google Play</span>
+        </div>
+      </div>
 
     </div>
   </section>
@@ -876,9 +976,9 @@
         const asteroidRect = asteroid.getBoundingClientRect();
 
         if (shipRect.left < asteroidRect.right &&
-            shipRect.right > asteroidRect.left &&
-            shipRect.top < asteroidRect.bottom &&
-            shipRect.bottom > asteroidRect.top) {
+          shipRect.right > asteroidRect.left &&
+          shipRect.top < asteroidRect.bottom &&
+          shipRect.bottom > asteroidRect.top) {
 
           // Collision detected!
           asteroid.classList.add('destroyed');
